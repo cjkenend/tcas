@@ -65,11 +65,7 @@ def altitude_separation_test(state: State) -> int:
         and (state.own_tracked_alt_rate <= 600)
         and (state.current_vertical_sep > 600)
     ) and (
-        (
-            (state.other_capability == 1)
-            and (state.two_of_three_reports_valid and state.other_rac == 0)
-        )
-        or not (state.other_capability == 1)
+        ((state.other_capability == 1)and (state.two_of_three_reports_valid and state.other_rac == 0)) or not (state.other_capability == 1)
     ):
         need_upward_RA = non_crossing_biased_climb(state) and own_below_threat(state)
         need_downward_RA = non_crossing_biased_descend(state) and own_above_threat(
